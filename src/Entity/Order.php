@@ -28,7 +28,7 @@ class Order
     /**
      * @return array
      */
-    public function getDataForView()
+    public function getDataForView(): array
     {
         $itemsData = [];
         foreach ($this->items as $item) {
@@ -47,7 +47,7 @@ class Order
      *
      * @return array
      */
-    private function getItemData(Item $item)
+    private function getItemData(Item $item): array
     {
         return [
             'id' => $item->getProduct()->getId(),
