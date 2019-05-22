@@ -18,6 +18,7 @@ class Product
     public function __construct()
     {
         $this->minimumQuantity = 1;
+        $this->id = mt_rand(); // it should be handled by db
     }
 
     /**
