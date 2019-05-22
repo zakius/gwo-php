@@ -10,12 +10,7 @@ class Cart
 {
     private $items;
 
-    public function __construct()
-    {
-        $this->items = [];
-    }
-
-    public function addProduct(Product $product, int $quantity): Cart
+    private function getProductIndex(Product $product): int
     {
         $id = $product->getId();
         $index = -1;
@@ -25,6 +20,19 @@ class Cart
                 break;
             }
         }
+        return $index;
+    }
+
+    public function __construct()
+    {
+        $this->items = [];
+    }
+
+    public function addProduct(Product $product, int $quantity): Cart
+    {
+        $id = $product->getId();
+        $index = -1;
+
         if ($index > -1) {
             $this->items[$index]->setQuantity($this->items[$index]->getQuantity()
                 + $quantity);
@@ -68,6 +76,11 @@ class Cart
         unset($this->items[$index]);
         $this->items = array_values($this->items);
         return $this;
+    }
+
+    public function setQuantity(Product $product, int $int)
+    {
+
     }
 
 
