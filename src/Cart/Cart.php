@@ -104,7 +104,7 @@ class Cart
      *
      * @return Order
      */
-    public function checkout(int $id)
+    public function checkout(int $id): Order
     {
         $order = new Order($id, $this->items, $this->getTotalPrice());
         $this->items = [];
