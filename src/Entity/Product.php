@@ -15,6 +15,11 @@ class Product
     private $minimumQuantity;
 
 
+    public function __construct()
+    {
+        $this->minimumQuantity = 1;
+    }
+
     /**
      * @param int $unitPrice
      *
