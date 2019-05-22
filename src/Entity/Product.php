@@ -10,6 +10,7 @@ use Recruitment\Entity\Exception\InvalidUnitPriceException;
 
 class Product
 {
+    private $id;
     private $unitPrice;
     private $minimumQuantity;
 
@@ -52,7 +53,14 @@ class Product
         return $this;
     }
 
-    private $id;
+    /**
+     * @return int
+     */
+    public function getMinimumQuantity(): int
+    {
+        return $this->minimumQuantity;
+    }
+
 
     /**
      * @param int $id
@@ -64,5 +72,6 @@ class Product
         $this->id = $id;
         return $this;
     }
+
 
 }
