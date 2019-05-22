@@ -71,9 +71,12 @@ class Cart
     public function setQuantity(Product $product, int $quantity): Cart
     {
         $index = $this->getProductIndex($product);
+        if ($index === -1) {
+            return $this->addProduct($product, $quantity);
+        }
         $this->items[$index]->setQuantity($quantity);
-        return $this;
 
+        return $this;
     }
 
 
