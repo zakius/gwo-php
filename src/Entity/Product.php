@@ -13,6 +13,7 @@ class Product
     private $id;
     private $unitPrice;
     private $minimumQuantity;
+    private $name;
 
 
     public function __construct()
@@ -65,6 +66,25 @@ class Product
     public function getMinimumQuantity(): int
     {
         return $this->minimumQuantity;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return Product
+     */
+    public function setName(string $name): Product
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
 
