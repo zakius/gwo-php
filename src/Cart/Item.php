@@ -4,6 +4,7 @@
 namespace Recruitment\Cart;
 
 
+use InvalidArgumentException;
 use Recruitment\Entity\Product;
 
 class Item
@@ -19,6 +20,10 @@ class Item
      */
     public function __construct(Product $product, int $quantity)
     {
+        if ($quantity < $product->getMinimumQuantity()) {
+            throw new InvalidArgumentException();
+        }
+
         $this->product = $product;
         $this->quantity = $quantity;
     }
