@@ -34,7 +34,7 @@ class Cart
     /**
      * @return array
      */
-    public function getItems()
+    public function getItems(): array
     {
         return $this->items;
     }
