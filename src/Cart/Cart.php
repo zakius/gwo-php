@@ -4,6 +4,7 @@
 namespace Recruitment\Cart;
 
 
+use OutOfBoundsException;
 use Recruitment\Entity\Product;
 
 class Cart
@@ -57,6 +58,9 @@ class Cart
 
     public function getItem(int $index): Item
     {
+        if ($index < 0 || $index >= count($this->items)) {
+            throw new OutOfBoundsException();
+        }
         return $this->items[$index];
     }
 
