@@ -48,8 +48,8 @@ class Cart
     {
         $index = $this->getProductIndex($product);
         if ($index > -1) {
-            $this->items[$index]->setQuantity($this->items[$index]->getQuantity()
-                + $quantity);
+            $currentQuantity = $this->items[$index]->getQuantity();
+            $this->items[$index]->setQuantity($currentQuantity + $quantity);
         } else {
             $item = new Item($product, $quantity);
             $this->items[] = $item;
