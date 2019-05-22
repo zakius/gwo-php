@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Recruitment\Entity;
+namespace Recruitment\Entity\Exception;
 
 
 use Exception;
