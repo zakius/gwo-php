@@ -17,8 +17,21 @@ class Cart
 
     public function addProduct(Product $product, int $quantity): Cart
     {
-        $item = new Item($product, $quantity);
-        $this->items[] = $item;
+        $id = $product->getId();
+        $index = -1;
+        for ($i = 0; $i < count($this->items); $i++) {
+            if ($this->items[$i]->getProduct()->getId() === $id) {
+                $index = $i;
+                break;
+            }
+        }
+        if ($index > -1) {
+            $this->items[$index]->setQuantity($this->items[$index]->getQuantity()
+                + $quantity);
+        } else {
+            $item = new Item($product, $quantity);
+            $this->items[] = $item;
+        }
         return $this;
     }
 
@@ -41,7 +54,7 @@ class Cart
         return $this->items[$index];
     }
 
-    public function removeProduct(Product $product)
+    public function removeProduct(Product $product): Cart
     {
         $id = $product->getId();
         $index = -1;
@@ -55,8 +68,6 @@ class Cart
         unset($this->items[$index]);
         $this->items = array_values($this->items);
         return $this;
-
-
     }
 
 
