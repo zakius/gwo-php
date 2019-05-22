@@ -11,14 +11,15 @@ class Order
     private $items;
     private $totalPrice;
 
+
     /**
      * Order constructor.
      *
-     * @param int $id
-     * @param     $items
-     * @param     $totalPrice
+     * @param int   $id
+     * @param array $items
+     * @param int   $totalPrice
      */
-    public function __construct(int $id, $items, $totalPrice)
+    public function __construct(int $id, array $items, int $totalPrice)
     {
         $this->id = $id;
         $this->items = $items;
