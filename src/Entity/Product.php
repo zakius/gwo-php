@@ -4,9 +4,13 @@
 namespace Recruitment\Entity;
 
 
+use InvalidArgumentException;
+
 class Product
 {
     private $unitPrice;
+    private $minimumQuantity;
+
 
     /**
      * @param int $unitPrice
@@ -18,6 +22,19 @@ class Product
             throw new InvalidUnitPriceException();
         }
         $this->unitPrice = $unitPrice;
+        return $this;
+    }
+
+
+    /**
+     * @param int $minimumQuantity
+     * @return $this
+     */
+    public function setMinimumQuantity(int $minimumQuantity){
+        if($minimumQuantity < 1){
+            throw new InvalidArgumentException();
+        }
+        $this->minimumQuantity = $minimumQuantity;
         return $this;
     }
 
