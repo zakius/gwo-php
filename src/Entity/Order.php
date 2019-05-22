@@ -3,7 +3,6 @@
 
 namespace Recruitment\Entity;
 
-
 use Recruitment\Cart\Item;
 
 class Order
@@ -56,5 +55,4 @@ class Order
             'total_price' => $item->getTotalPrice()
         ];
     }
-
 }

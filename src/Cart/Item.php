@@ -3,7 +3,6 @@
 
 namespace Recruitment\Cart;
 
-
 use InvalidArgumentException;
 use Recruitment\Cart\Exception\QuantityTooLowException;
 use Recruitment\Entity\Product;

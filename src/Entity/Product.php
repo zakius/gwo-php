@@ -3,10 +3,8 @@
 
 namespace Recruitment\Entity;
 
-
 use InvalidArgumentException;
 use Recruitment\Entity\Exception\InvalidUnitPriceException;
-
 
 class Product
 {
@@ -106,6 +104,4 @@ class Product
     {
         return $this->id;
     }
-
-
 }

@@ -3,7 +3,6 @@
 
 namespace Recruitment\Cart;
 
-
 use OutOfBoundsException;
 use Recruitment\Entity\Order;
 use Recruitment\Entity\Product;
@@ -134,5 +133,4 @@ class Cart
         $this->items = [];
         return $order;
     }
-
 }
