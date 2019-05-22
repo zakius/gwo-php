@@ -5,6 +5,7 @@ namespace Recruitment\Cart;
 
 
 use InvalidArgumentException;
+use Recruitment\Cart\Exception\QuantityTooLowException;
 use Recruitment\Entity\Product;
 
 class Item
@@ -34,6 +35,22 @@ class Item
     public function getProduct(): Product
     {
         return $this->product;
+    }
+
+
+    /**
+     * @param int $quantity
+     *
+     * @return Item
+     * @throws QuantityTooLowException
+     */
+    public function setQuantity(int $quantity): Item
+    {
+        if ($quantity < $this->product->getMinimumQuantity()) {
+            throw new QuantityTooLowException();
+        }
+        $this->quantity = $quantity;
+        return $this;
     }
 
     /**
