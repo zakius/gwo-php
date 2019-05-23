@@ -22,6 +22,7 @@ class ItemTest extends TestCase
         $this->assertEquals($product, $item->getProduct());
         $this->assertEquals(10, $item->getQuantity());
         $this->assertEquals(100000, $item->getTotalPrice());
+        $this->assertEquals(123000, $item->getTotalPriceGross());
     }
 
     /**
