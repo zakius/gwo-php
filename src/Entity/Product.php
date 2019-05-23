@@ -4,6 +4,7 @@
 namespace Recruitment\Entity;
 
 use InvalidArgumentException;
+use Recruitment\Entity\Exception\InvalidTaxException;
 use Recruitment\Entity\Exception\InvalidUnitPriceException;
 
 class Product
@@ -12,12 +13,41 @@ class Product
     private $unitPrice;
     private $minimumQuantity;
     private $name;
+    private $tax;
+
+    private const ALLOWED_TAX_VALUES = [0, 5, 8, 23];
 
 
     public function __construct()
     {
         $this->minimumQuantity = 1;
         $this->id = mt_rand(); // it should be handled by db
+        $this->tax = 23; // base VAT value
+    }
+
+
+    /**
+     * @param int $tax
+     *
+     * @return Product
+     * @throws InvalidTaxException
+     */
+    public function setTax(int $tax): Product
+    {
+        if (!in_array($tax, self::ALLOWED_TAX_VALUES)) {
+            throw new InvalidTaxException();
+        }
+
+        $this->tax = $tax;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTax(): int
+    {
+        return $this->tax;
     }
 
     /**
@@ -33,6 +63,14 @@ class Product
         }
         $this->unitPrice = $unitPrice;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitPriceGross(): int
+    {
+        return $this->unitPrice + round($this->unitPrice * $this->tax / 100);
     }
 
     /**
