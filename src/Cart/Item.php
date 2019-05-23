@@ -60,8 +60,19 @@ class Item
         return $this->quantity;
     }
 
+    /**
+     * @return int
+     */
     public function getTotalPrice(): int
     {
         return $this->product->getUnitPrice() * $this->quantity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalPriceGross(): int
+    {
+        return $this->product->getUnitPriceGross() * $this->quantity;
     }
 }
