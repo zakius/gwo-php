@@ -23,6 +23,7 @@ class CartTest extends TestCase
 
         $this->assertCount(1, $cart->getItems());
         $this->assertEquals(15000, $cart->getTotalPrice());
+        $this->assertEquals(18450, $cart->getTotalPriceGross());
         $this->assertEquals($product, $cart->getItem(0)->getProduct());
     }
 
@@ -144,8 +145,12 @@ class CartTest extends TestCase
         ];
     }
 
-    private function buildTestProduct(int $id, int $price): Product
+    private function buildTestProduct(
+        int $id,
+        int $price,
+        int $tax = 23
+    ): Product
     {
-        return (new Product())->setId($id)->setUnitPrice($price);
+        return (new Product())->setId($id)->setUnitPrice($price)->setTax($tax);
     }
 }
