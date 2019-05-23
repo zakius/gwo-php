@@ -3,7 +3,6 @@
 
 namespace Recruitment\Entity\Exception;
 
-
 use Exception;
 
 class InvalidTaxException extends Exception
