@@ -22,6 +22,18 @@ class Cart
     /**
      * @return int
      */
+    public function getTotalPriceGross(): int
+    {
+        $totalPriceGross = 0;
+        foreach ($this->items as $item) {
+            $totalPriceGross += $item->getTotalPriceGross();
+        }
+        return $totalPriceGross;
+    }
+
+    /**
+     * @return int
+     */
     public function getTotalPrice(): int
     {
         $totalPrice = 0;
@@ -106,7 +118,7 @@ class Cart
      */
     public function checkout(int $id): Order
     {
-        $order = new Order($id, $this->items, $this->getTotalPrice());
+        $order = new Order($id, $this->items, $this->getTotalPrice(), $this->getTotalPriceGross());
         $this->items = [];
         return $order;
     }
